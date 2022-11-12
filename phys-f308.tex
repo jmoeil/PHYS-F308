@@ -1,0 +1,150 @@
+\documentclass[11pt,oneside,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{cancel}
+\usepackage{fancyhdr,fancyvrb}
+\usepackage{lastpage}
+\usepackage{bm}
+\usepackage{pifont}
+\usepackage{mathrsfs}
+\usepackage{calrsfs}
+\usepackage{wasysym}
+\usepackage{dsfont}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{pgfplotstable}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{subfiles}
+\usepackage{systeme}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{lmodern}
+\usepackage{chngcntr}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{geometry}
+\geometry{top=2cm, bottom=2cm, left=1cm, right=1cm}
+\pgfplotsset{width=10cm,compat=1.16}
+
+% Counter stuff
+\counterwithin{equation}{section}
+\setcounter{tocdepth}{3}
+
+% Random utilities...
+\newcommand{\ti}{\ensuremath{\times}}
+\newcommand{\h}{\ensuremath{\hbar}}
+\newcommand{\med}{\ensuremath\cdot}
+\newcommand\au[2]{\left.#1\right|_{#2}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
+
+% Special formatting for paragraphs
+\titleformat{\paragraph}
+  {\normalfont\normalsize\bfseries}
+  {\theparagraph}
+  {1em}
+  {}
+\titlespacing*{\paragraph}
+  {0pt}
+  {3.25ex plus 1ex minus .2ex}
+  {1.5ex plus .2ex}
+
+% Gestion of headers and footers
+
+
+% Allow usage of smileys
+%\newfontfamily\DejaSans{DejaVu Sans}
+
+% Defining new theorem environments
+\newtheorem{theorem}{Théorème}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{property}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{reminder}[theorem]{Reminder}
+\newtheorem{example}[theorem]{Example}
+
+\renewcommand{\proofname}{Preuve}
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+
+% Setup of hyperref features
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=purple,
+  pdftitle="DM202122 - MOEIL Juian"
+}
+
+% Definition boite grise avec couleur grise définie
+\definecolor{BGgris}{RGB}{222,230,230}
+\newcommand\bg[2]{%
+  \begin{center}%
+    \fcolorbox{white}{BGgris}{%
+      \parbox{.9\linewidth}{%
+        \begin{large} \textit{#1} \end{large} \\%
+        #2%
+      }%
+    }%
+  \end{center}%
+}
+
+% Boite d'alerte
+\definecolor{BGorange}{RGB}{255, 216, 154}
+\newcommand\probleme[1]{%
+  \begin{center}%
+    \fcolorbox{white}{BGorange}{%
+      \parbox{.9\linewidth}{%
+        \begin{large} \textbf{Problème} \end{large} \\%
+        #1%
+      }%
+    }%
+  \end{center}%
+}
+
+\setlength{\fboxsep}{2em}
+
+\title{%
+  \textbf{PHYS-F308 - Soft matter and solid state physics} \\
+  \textit{Notes on soft matter}\\
+}
+\author{%
+  \href{mailto:juian.moeil@ulb.be}{Moeil Juian}
+}
+\date{%
+  \textbf{Université Libre de Bruxelles} \\
+  \emph{Academic year 2022-2023}\\
+  \today
+}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+
+In this course, we are considering a large class of materials featuring certain properties. In particular, we are interested in materials that are "soft" such as simple liquids, polymers, gels, glasses, liquid crystals, ... or even biological materials!
+\begin{definition}
+    A particular object is defined to be soft matter when its interactions are of the order of $k_BT$. 
+\end{definition}
+Being defined at such an order, \emph{soft matter} presents a series of particularly interesting properties:
+\begin{itemize}
+    \item Lack of long-range order.
+    \item Relevance of the entropic contribution to the energy balance.
+    \item Corrections from quantum mechanics not needed.
+\end{itemize}
+
+\subfile{partA/partA.tex}
+
+\end{document}
