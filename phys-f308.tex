@@ -33,6 +33,7 @@
 \usepackage{textcomp}
 \usepackage{float}
 \usepackage{subcaption}
+\usepackage{xcolor}
 \usepackage[compat=1.1.0]{tikz-feynman}
 \usepackage{geometry}
 \geometry{top=2cm, bottom=2cm, left=1cm, right=1cm}
@@ -49,6 +50,8 @@
 \newcommand\au[2]{\left.#1\right|_{#2}}
 \renewcommand{\d}{\mathrm{d}}
 \newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
+\newcommand\pderconst[3]{\left.\frac{\partial #1}{\partial #2}\right|_{#3}}
+
 
 % Special formatting for paragraphs
 \titleformat{\paragraph}
@@ -68,7 +71,7 @@
 %\newfontfamily\DejaSans{DejaVu Sans}
 
 % Defining new theorem environments
-\newtheorem{theorem}{Théorème}[section]
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{lemma}[theorem]{Lemme}
 \newtheorem{property}[theorem]{Proposition}
@@ -130,6 +133,7 @@
 }
 
 \begin{document}
+\renewcommand{\partname}{Lecture}
 \maketitle
 \thispagestyle{empty}
 \tableofcontents
