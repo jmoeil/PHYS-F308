@@ -1,0 +1,194 @@
+\documentclass[l1pt, oneside,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{cancel}
+\usepackage{fancyhdr,fancyvrb}
+\usepackage{lastpage}
+\usepackage{bm}
+\usepackage{pifont}
+\usepackage{mathrsfs}
+\usepackage{calrsfs}
+\usepackage{wasysym}
+\usepackage{dsfont}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{pgfplotstable}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{subfiles}
+\usepackage{systeme}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{lmodern}
+\usepackage{chngcntr}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{geometry}
+\geometry{top=2cm, bottom=2cm, left=1cm, right=1cm}
+\pgfplotsset{width=10cm,compat=1.16}
+
+% Counter stuff
+\counterwithin{equation}{section}
+\setcounter{tocdepth}{3}
+
+% Random utilities...
+\newcommand{\ti}{\ensuremath{\times}}
+\newcommand{\h}{\ensuremath{\hbar}}
+\newcommand{\med}{\ensuremath\cdot}
+\newcommand\au[2]{\left.#1\right|_{#2}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
+\newcommand\pderconst[3]{\left.\frac{\partial #1}{\partial #2}\right|_{#3}}
+
+
+% Special formatting for paragraphs
+\titleformat{\paragraph}
+  {\normalfont\normalsize\bfseries}
+  {\theparagraph}
+  {1em}
+  {}
+\titlespacing*{\paragraph}
+  {0pt}
+  {3.25ex plus 1ex minus .2ex}
+  {1.5ex plus .2ex}
+
+% Gestion of headers and footers
+
+
+% Allow usage of smileys
+%\newfontfamily\DejaSans{DejaVu Sans}
+
+% Defining new theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{property}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{reminder}[theorem]{Reminder}
+\newtheorem{example}[theorem]{Example}
+
+\renewcommand{\proofname}{Preuve}
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+
+% Setup of hyperref features
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=purple,
+  pdftitle="DM202122 - MOEIL Juian"
+}
+
+% Definition boite grise avec couleur grise définie
+\definecolor{BGgris}{RGB}{222,230,230}
+\newcommand\bg[2]{%
+  \begin{center}%
+    \fcolorbox{white}{BGgris}{%
+      \parbox{.9\linewidth}{%
+        \begin{large} \textit{#1} \end{large} \\%
+        #2%
+      }%
+    }%
+  \end{center}%
+}
+
+% Boite d'alerte
+\definecolor{BGorange}{RGB}{255, 216, 154}
+\newcommand\probleme[1]{%
+  \begin{center}%
+    \fcolorbox{white}{BGorange}{%
+      \parbox{.9\linewidth}{%
+        \begin{large} \textbf{Problème} \end{large} \\%
+        #1%
+      }%
+    }%
+  \end{center}%
+}
+
+\setlength{\fboxsep}{2em}
+
+\title{%
+  \textbf{PHYS-F308 - Soft matter and solid state physics} \\
+  \textit{Notes on solid state matter}\\
+}
+\author{%
+  \href{mailto:juian.moeil@ulb.be}{Moeil Juian}
+}
+\date{%
+  \textbf{Université Libre de Bruxelles} \\
+  \emph{Academic year 2023-2024}\\
+  \today
+}
+
+\begin{document}
+  \renewcommand{\partname}{Lecture}
+  \maketitle
+  \thispagestyle{empty}
+  \tableofcontents
+  \newpage
+
+  \begin{abstract}
+    This course in Solid State Physics is designed to provide students with a comprehensive foundation in one of the most crucial and successful sub-fields of Condensed Matter Physics. It covers fundamental topics such as crystal systems, phonons, interatomic forces, the free electron model, and energy bands. Through a blend of theoretical instruction and practical exercises, students will gain a deep understanding of concepts like reciprocal space and X-ray diffraction, preparing them for advanced studies and research in physics. The course emphasizes the technological significance of Solid State Physics, reflected in the numerous Nobel Prizes awarded in this field.\\
+
+    The course follows the structure and philosophy of "The Oxford Solid Solid State physics".
+  \end{abstract}
+
+  \section{Crystal lattice}
+
+  In one's life, one encounters many different types of materials that each can be defined and studied rigorously by different techniques. This course focuses on the study of \textbf{crystal lattices}, as defined in. Other materials may include (but is not limited to) non-crystalline solids, liquids, quasi-crystals and polymers.\\
+%   Insert crystal lattice definition
+
+  \subsection{How are atoms disposed in a solid?}
+
+  This may seem to be a complex question -- and it is. However, the case of crystals is special as the underlying symmetry allows for a simple answer. Indeed, \textit{the shape of the crystal reflects on the arrangement of the atoms}.\\
+
+  One may classify crystals in three main categories. Those are:
+  \begin{enumerate}
+    \item Single crystals -- meaning that the crystal lattice of the entire sample is unbroken and continuous, without grain boundaries.
+    \item Polycristalline solids
+    \item Non-cristalline solids.
+  \end{enumerate}
+
+  Single crystals are rare in nature, the different properties surrounding them being complex and difficult to meet. Indeed, to be qualified as "single crystal", a solid must:
+  \begin{enumerate}
+    \item\textbf{Be periodic}. The atomic structure must span over the entire volume.
+    \item \textbf{Be symmetric}. At long-range scales, the atoms must be related to one-another by a structure that has translational and rotational symmetry.
+    \item \textbf{Be anisotropic}. The physical and mechanical properties often differ with orientation.
+  \end{enumerate}
+
+  \begin{definition}
+    A polycristalline solid is made up of an aggregate of many small single crystals (so-called grains).
+  \end{definition}
+  \begin{definition}
+    A polycristalline solid with grains smaller than 10nm is called nanocrystalline.
+  \end{definition}
+
+  \subsection*{Bravais lattices}
+  \begin{definition}
+    A Bravais lattice represents the geometry of the underlying periodic structure, with no regard to the nature of the units. A Bravais lattice can be defined using three equivalent expressions.
+    \begin{enumerate}
+        \item A Bravais lattice is an infinite set of discrete points with an arrangement and orientation such that is appears as exactly the same when viewed from a probable point.
+        \item A Bravais lattice is a set of points that all have the same environment.
+        \item A Bravais lattice is a set of points to which one can associate a position vector $\bm{R}$:
+        \begin{equation}
+            \bm{R} = n_1\bm{a}_1+n_2\bm{a}_2+n_3\bm{n}_3
+        \end{equation}
+        where $\bm{a}_i$ are independant vectors\footnote{Equivalently, they may be labelled as primitive vectors. In any case, they generate the entire lattice.} and $n_1$ are integrer numbers.
+    \end{enumerate}
+  \end{definition}
+  \begin{property}
+    Proving that these definitions are equivalent to one another is a good exercise.
+  \end{property}
+\end{document}
