@@ -1,0 +1,8 @@
+#Wavelength
+0.162
+#Angles in degrees
+42.3
+49.2
+72.2
+87.4
+92.3
